@@ -1,0 +1,44 @@
+Exercicio 1 MySql
+
+create schema if not exists escola;
+
+use escola;
+
+create table if not exists aluno (
+matricula int auto_increment primary key, 
+cpf varchar(128), 
+nome varchar(256), 
+aniversario date, 
+telefone varchar(128),
+endereco varchar(128)
+);
+
+create table if not exists curso (
+id int auto_increment primary key, 
+nome varchar(128), 
+descricao varchar(256), 
+mensalidade double, 
+criacao date
+);
+
+create table if not exists unidadeCurricular (
+id int auto_increment primary key, 
+nome varchar(128), 
+descricao varchar(256), 
+data_inicio date, 
+data_criacao date
+);
+
+insert into aluno (matricula, cpf, nome, aniversario, telefone, endereco) values ('123', '1234', 'Joao', '2004-05-15', '31981013081', 'Rua Joaquim');
+
+select * from aluno;
+
+insert into curso (id, nome, descricao, mensalidade, criacao) values ('123', 'Tecnologia', 'Progamacao', '750.00', '2024-06-15');
+
+select * from curso;
+
+insert into unidadecurricular (id, nome, descricao, data_inicio, data_criacao) values ('123', 'Formacao Basica', 'Formacao', '2023-06-15', '2024-06-15');
+
+select * from unidadeCurricular;
+
+
