@@ -1,0 +1,59 @@
+Crie um banco de dados para gestão dos ativos financeiros comprados pelos clientes de
+uma corretora de títulos e valores mobiliários (CTVM). 
+
+Os ativos financeiros possuem código, nome e descrição. Alguns ativos possuem
+dados sobre seus emissores, data de início e data de fim. As compras realizadas pelos
+cliente são registradas em notas de corretagem. As notas de corretagem são semelhantes a
+notas fiscais de compra. Nas notas de corretagem, há a data de compra, o códito do ativo
+financeiro comprado, quantidade comprada, cotação e valor da compra. Os clientes
+possuem CPF, nome, data de nascimento, número da agência, número da conta, telefone e
+endereço.
+
+create schema if not exists gestao;
+
+use gestao;
+
+create table if not exists ativFin (
+codigo int auto_increment primary key, 
+nome varchar(128), 
+descricao varchar(256), 
+data_inicio date, 
+data_fim date
+);
+
+create table if not exists notaCorretagem (
+codigoAtivo int auto_increment primary key, 
+DataCompra date, 
+Quantidade int, 
+Cotacao double, 
+Valor double
+);
+
+create table if not exists Cliente (
+Cpf int auto_increment primary key, 
+Nome varchar(128), 
+DataNasc date, 
+NumAgencia varchar(128), 
+NumConta varchar(128),
+Telefone varchar(128),
+Endereco varchar(128)
+);
+
+insert into ativfin (codigo, nome, descricao, data_inicio, data_fim) values ('1', 'Certificados', 'Depósitos Bancários', '2022-04-17', '2023-05-02');
+
+insert into notacorretagem (codigoativo, datacompra, quantidade, cotacao, valor) values ('123', '2022-07-12', '25', 23.54, '588');
+
+insert into cliente (cpf, nome, datanasc, numagencia, numconta, telefone, endereco) values ('175640', 'Joao', '2004-05-15', '1234', '432', '31981013081', 'Rua Joaquim');
+
+
+update cliente
+set endereco = 'Rua Cruzeiro'
+where nome = 'Joao';
+
+update notacorretagem
+set quantidade = 50
+where codigoativo = '123';
+
+update notacorretagem
+set valor = 1177
+where codigoativo = '123';
